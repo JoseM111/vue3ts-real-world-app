@@ -1,21 +1,19 @@
-<!-- HomePage.vue -->
+<!-- EventCardComponent.vue -->
 
 // 🌀🌀💻 SCRIPT 💻🌀🌀
 <!-- 🎵🎵🔲🔲◾️◾️◾️◾️◾️◾️◾️ -->
 <script lang="ts">
-import { defineComponent } from 'vue'
-import EventCardComponent from '@/components/EventCard.component.vue'
-import { EVENTS_MOCK_DATA } from "@/data/events.data"
+import { defineComponent, PropType } from 'vue'
+import type { EventType } from "@/types/Event.type"
 // ⚫️⚫️☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰
 export default defineComponent({
-  name: 'HomePage',
-  components: {
-    EventCardComponent,
-  },
-  // Component options data
-  data: () => ({
-    events: EVENTS_MOCK_DATA.events,
-  })
+  name: 'EventCardComponent',
+  props: {
+    event: {
+      type: Object as PropType<EventType>,
+      required: true
+    }
+  }
 })
 </script>
 <!-- 🌀🌀💻================================================= -->
@@ -24,13 +22,13 @@ export default defineComponent({
 <!-- 🎵🎵🔲🔲◾️◾️◾️◾️◾️◾️◾️ -->
 <template>
   <!-- 🎵🎵🔲🔲◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️ -->
-  <div class="homePageContainer">
+  <div class="eventCardContainer">
     
-    <!--⚫️ Event-Card-Component ⚫️-->
-    <EventCardComponent  v-for="event in events" :key="event.id"
-        :event="event"
-    />
+    <span>
+      <b>@ {{ event.time }} on {{ event.date }}</b>
+    </span>
     
+    <h1><b>{{ event.title }}</b></h1>
   </div>
   <!-- 🎵🎵🔲🔲◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️ -->
 </template>
@@ -38,16 +36,22 @@ export default defineComponent({
 
 // 🌀🌀💻 STYLES 💻🌀🌀
 <!-- 🎵🎵🔲🔲◾️◾️◾️◾️◾️◾️◾️ -->
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss">
-.homePageContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+<style scoped lang="scss">
+.eventCardContainer {
+  padding: 20px;
+  width: 250px;
+  cursor: pointer;
+  border: 1px solid #39495c;
+  margin-bottom: 18px;
+  
+  &:hover {
+    transform: scale(1.01);
+    box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.2);
+  }
   /// 🎵🔲🔲️◾️◾️◾️◾️◾  (|  nested styles  |)  ◾️◾️◾️◾️◾🔲🔲🎵
   
 }
-/// - END OF: homePageContainer
+/// - END OF: CONTAINER_NAMEContainer
 </style>
 <!-- 🌀🌀💻================================================ -->
 
