@@ -1,8 +1,8 @@
 /* events..data.ts */
-import { EventAPIType } from "@/types/Event.type"
+import { IEventAPI } from "@/types/Event.type"
 // ⚫️⚫️☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰
 
-export let EVENTS_MOCK_DATA: EventAPIType = {
+export let EVENTS_MOCK_DATA: IEventAPI = {
 	events: [
 		{
 			id: 5928101,

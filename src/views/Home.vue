@@ -27,7 +27,9 @@ export default defineComponent({
   <div class="homePageContainer">
     
     <!--⚫️ Event-Card-Component ⚫️-->
-    <EventCardComponent  v-for="event in events" :key="event.id"
+    <EventCardComponent
+        v-for="event in events"
+        :key="event.id"
         :event="event"
     />
     
@@ -47,6 +49,7 @@ export default defineComponent({
   /// 🎵🔲🔲️◾️◾️◾️◾️◾  (|  nested styles  |)  ◾️◾️◾️◾️◾🔲🔲🎵
   
 }
+
 /// - END OF: homePageContainer
 </style>
 <!-- 🌀🌀💻================================================ -->
