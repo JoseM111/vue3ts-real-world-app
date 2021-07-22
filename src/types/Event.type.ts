@@ -1,7 +1,7 @@
 /* Event.type */
 // ⚫️⚫️☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰
 
-export type EventAPIType = {
+export interface IEventAPI {
 	events: Array<EventType>
 }
 
