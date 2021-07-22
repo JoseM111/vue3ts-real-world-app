@@ -28,7 +28,9 @@ export default defineComponent({
       <b>@ {{ event.time }} on {{ event.date }}</b>
     </span>
     
-    <h1><b>{{ event.title }}</b></h1>
+    <h4>
+      <b>{{ event.title }}</b>
+    </h4>
   </div>
   <!-- 🎵🎵🔲🔲◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️ -->
 </template>
@@ -48,9 +50,11 @@ export default defineComponent({
     transform: scale(1.01);
     box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.2);
   }
+  
   /// 🎵🔲🔲️◾️◾️◾️◾️◾  (|  nested styles  |)  ◾️◾️◾️◾️◾🔲🔲🎵
   
 }
+
 /// - END OF: CONTAINER_NAMEContainer
 </style>
 <!-- 🌀🌀💻================================================ -->

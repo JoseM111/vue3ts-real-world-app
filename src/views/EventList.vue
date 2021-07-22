@@ -8,7 +8,7 @@ import EventCardComponent from '@/components/EventCard.component.vue'
 import { EVENTS_MOCK_DATA } from "@/data/events.data"
 // ⚫️⚫️☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰
 export default defineComponent({
-  name: 'HomePage',
+  name: 'EventListPage',
   components: {
     EventCardComponent,
   },
@@ -26,6 +26,9 @@ export default defineComponent({
   <!-- 🎵🎵🔲🔲◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️ -->
   <div class="homePageContainer">
     
+    <!--⚫️ Event-Header ⚫️-->
+    <h1>Events For Goods</h1>
+  
     <!--⚫️ Event-Card-Component ⚫️-->
     <EventCardComponent
         v-for="event in events"
