@@ -26,12 +26,12 @@ export default defineComponent({
     //..........
     const axiosResCallback = (res: AxiosResponse) => {
       //..........
-      console.log('GET request response:', res.data)
+      console.log('[GET] request response:', res.data)
       this.events = res.data
     }
     
     return (
-        EventsService.getEvent()
+        EventsService.getAllEvents()
         .then(axiosResCallback)
         .catch((err: Error) => console.log('[ERROR]', err))
     )
