@@ -8,8 +8,15 @@
 
   <!--⚫️ Router-links ⚫️-->
   <div id="nav">
-    <router-link to="/">Events</router-link> |
-    <router-link to="/about">About</router-link>
+    <router-link :to="{ name: 'EventListPage' }">
+      Events
+    </router-link>
+    
+    <b>|</b>
+    
+    <router-link :to="{ name: 'About' }">
+      About
+    </router-link>
   </div>
   
   <!--⚫️ Router-views ⚫️-->
@@ -23,7 +30,7 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Amazon Ember Cd RC", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -31,7 +38,7 @@
 }
 
 h4 {
-  font-size: 20px;
+  font-size: 25px;
 }
 
 #nav {

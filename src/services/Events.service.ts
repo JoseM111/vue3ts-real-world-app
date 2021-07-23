@@ -15,7 +15,11 @@ const apiClient: AxiosInstance = axios.create({
 
 export default {
 	//..........
-	getEvent: function ():  Promise<AxiosResponse<IEventAPI>> {
+	getAllEvents: function ():  Promise<AxiosResponse<IEventAPI>> {
 		return apiClient.get('/events')
+	},
+	
+	getEventById: function (id: string):  Promise<AxiosResponse<IEventAPI>> {
+		return apiClient.get('/events/' + id)
 	}
 }

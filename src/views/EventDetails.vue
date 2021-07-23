@@ -1,19 +1,40 @@
-<!-- EventCardComponent.vue -->
+<!-- EventDetails.vue -->
 
 // 🌀🌀💻 SCRIPT 💻🌀🌀
 <!-- 🎵🎵🔲🔲◾️◾️◾️◾️◾️◾️◾️ -->
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
-import type { EventType } from "@/types/Event.type"
+import { EventDTO } from "@/dto/Event.dto"
+import { AxiosResponse } from "axios"
+import EventsService from "@/services/Events.service"
 // ⚫️⚫️☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰☰
 export default defineComponent({
-  name: 'EventCardComponent',
+  name: 'EventDetailsPage',
   props: {
-    event: {
-      type: Object as PropType<EventType>,
+    id: {
+      type: String as PropType<string>,
       required: true
     }
-  }
+  },
+  // Component options data
+  data: () => ({
+    event: EventDTO.event,
+  }),
+  // Component options created
+  created() {
+    //..........
+    const axiosResCallback = (res: AxiosResponse) => {
+      //..........
+      console.log('[GET] request response:', res.data)
+      this.event = res.data
+    }
+    
+    return (
+        EventsService.getEventById(this.id)
+        .then(axiosResCallback)
+        .catch((err: Error) => console.log('[ERROR]', err))
+    )
+  },
 })
 </script>
 <!-- 🌀🌀💻================================================= -->
@@ -22,48 +43,27 @@ export default defineComponent({
 <!-- 🎵🎵🔲🔲◾️◾️◾️◾️◾️◾️◾️ -->
 <template>
   <!-- 🎵🎵🔲🔲◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️ -->
-  <router-link class="event-link"
-               :to="{ name: 'EventDetailsPage',
-               params: { id: event.id } }"
+  <div v-if="event"
+      class="eventDetailsContainer"
   >
-    <div class="eventCardContainer">
-    
-      <span>
-        <b>@ {{ event.time }} on {{ event.date }}</b>
-      </span>
-    
-      <h4>
-        <b>{{ event.title }}</b>
-      </h4>
-    </div>
-  </router-link>
+    <h1>{{ event.title }}</h1>
+    <p>{{ event.time }} on {{ event.date }} @ {{ event.location }}</p>
+    <p>{{ event.description }}</p>
+  </div>
   <!-- 🎵🎵🔲🔲◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️◾️ -->
 </template>
 <!-- 🌀🌀💻================================================ -->
 
 // 🌀🌀💻 STYLES 💻🌀🌀
 <!-- 🎵🎵🔲🔲◾️◾️◾️◾️◾️◾️◾️ -->
-<style scoped lang="scss">
-.eventCardContainer {
-  padding: 20px;
-  width: 250px;
-  cursor: pointer;
-  border: 1px solid #39495c;
-  margin-bottom: 18px;
-  
-  &:hover {
-    transform: scale(1.01);
-    box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.2);
-  }
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style lang="scss">
+.eventDetailsContainer {
   
   /// 🎵🔲🔲️◾️◾️◾️◾️◾  (|  nested styles  |)  ◾️◾️◾️◾️◾🔲🔲🎵
-  .event-link {
-    color: #2c3e50;
-    text-decoration: none;
-  }
-}
 
-/// - END OF: eventCardContainer
+}
+/// - END OF: eventDetailsContainer
 </style>
 <!-- 🌀🌀💻================================================ -->
 
