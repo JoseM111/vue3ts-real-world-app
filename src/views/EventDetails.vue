@@ -25,7 +25,7 @@ export default defineComponent({
     //..........
     const axiosResCallback = (res: AxiosResponse) => {
       //..........
-      console.log('[GET] request response:', res.data)
+      console.log('[GET] request by :id response:', res.data)
       this.event = res.data
     }
     
